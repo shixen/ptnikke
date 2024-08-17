@@ -1,0 +1,10 @@
+.customImage {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-right: 15px;
+  }
+  
+  .card-body {
+    text-align: left;
+  }
