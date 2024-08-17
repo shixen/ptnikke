@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthToken';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const AuthPage = () => {
+
+const LoginLogout = () => {
     const { isAuthenticated, login, logout } = useAuth();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -12,25 +13,16 @@ const AuthPage = () => {
     const [isLoggingOut, setIsLoggingOut] = useState(false);
     const navigate = useNavigate();
 
-    // Check if the user is already authenticated when the component mounts
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate('/home'); // Redirect to home or another protected route if already authenticated
-        }
-    }, [isAuthenticated, navigate]);
-
-    // Handle login
     const handleLogin = async () => {
         try {
             const response = await axios.post('https://my-pt-api-242fe05c6a61.herokuapp.com/accounts/login/', {
                 username,
                 password
             });
-    
+
             if (response.status === 200) {
                 const { token } = response.data;
                 localStorage.setItem('authToken', token);
-                console.log('Login token:', token);
                 login(token);
                 navigate('/home'); // Redirect after successful login
             } else {
@@ -42,21 +34,19 @@ const AuthPage = () => {
         }
     };
 
-    // Handle logout
     const handleLogout = async () => {
-        setIsLoggingOut(true); // Set logging out state to true
+        setIsLoggingOut(true);
         try {
             const token = localStorage.getItem('authToken');
-            console.log('Logout token:', token);
-    
+
             if (!token) {
                 throw new Error('No token found');
             }
-    
+
             const response = await axios.post('https://my-pt-api-242fe05c6a61.herokuapp.com/accounts/logout/', {}, {
                 headers: { 'Authorization': `Token ${token}` }
             });
-    
+
             if (response.status === 200) {
                 localStorage.removeItem('authToken');
                 logout();
@@ -71,8 +61,7 @@ const AuthPage = () => {
             setIsLoggingOut(false); // Reset logging out state
         }
     };
-
-    // Render Login or Logout based on authentication status
+   // Render Login or Logout based on authentication status
     return (
         <Container className="mt-5">
             {isAuthenticated ? (
@@ -115,4 +104,4 @@ const AuthPage = () => {
     );
 };
 
-export default AuthPage;
+export default LoginLogout;
