@@ -35,7 +35,7 @@ const NavBar = () => {
               Sign up
             </NavLink>
             <NavLink 
-              to="/login" 
+              to="/auth" 
               className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
             >
               Login/logout
