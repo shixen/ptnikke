@@ -20,7 +20,7 @@ const AboutMe = () => {
               and bench presses. Over the years, I have honed my skills and knowledge in these areas, helping clients achieve their fitness goals and improve their overall strength and performance.
             My journey in the fitness industry has been both rewarding and challenging.
              I am passionate about guiding individuals through their fitness journeys, offering personalized training programs, and providing support and motivation every step of the way.
-              Whether you’re looking to enhance your strength, improve your technique, or reach new fitness milestones, I’m here to help you every step of the way.
+              Whether you are looking to enhance your strength, improve your technique, or reach new fitness milestones, Im here to help you every step of the way.
             Feel free to adjust any part of the text to better suit your personal experience or style!
             </Card.Text>
           </Card.Body>
