@@ -35,10 +35,16 @@ const NavBar = () => {
               Sign up
             </NavLink>
             <NavLink 
-              to="/auth" 
+              to="/login" 
               className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
             >
-              Login/logout
+              Login
+            </NavLink>
+            <NavLink 
+              to="/logout" 
+              className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            >
+              Logout
             </NavLink>
           </Nav>
         </Navbar.Collapse>
